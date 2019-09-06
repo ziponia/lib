@@ -16,15 +16,14 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import java.io.IOException;
 import java.util.Map;
 
-public class KakaoServiceImpl implements KakaoService {
+class KakaoClient {
 
     private static final String BASE_URL = "https://dapi.kakao.com";
     private KakaoRepository kakaoClient;
-    private boolean debug = false;
+    private String REST_HEADER;
 
-    public KakaoServiceImpl(final String restKey) {
+    private KakaoClient(final String restKey, final String adminKey) {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-        httpClient.addInterceptor(new KakaoClientInterceptor(restKey, debug));
         Retrofit apiClient = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(httpClient.build())
@@ -32,9 +31,14 @@ public class KakaoServiceImpl implements KakaoService {
                 .build();
 
         kakaoClient = apiClient.create(KakaoRepository.class);
+
+        this.REST_HEADER = "KakaoAK " + restKey;
     }
 
-    @Override
+    public static Builder builder() {
+        return new Builder();
+    }
+
     public WebSearchResponse webSearch(WebSearchRequest request) {
 
         if (request.getQuery() == null || request.getQuery().length() == 0) {
@@ -43,7 +47,7 @@ public class KakaoServiceImpl implements KakaoService {
         String js = new Gson().toJson(request);
         TypeToken<Map<String, String>> typeToken = new TypeToken<Map<String, String>>(){};
         Map<String, String> query = new Gson().fromJson(js, typeToken.getType());
-        Call<WebSearchResponse> call = kakaoClient.webSearch(query);
+        Call<WebSearchResponse> call = kakaoClient.webSearch(REST_HEADER, query);
         Response<WebSearchResponse> res;
         try {
             res = call.execute();
@@ -62,7 +66,23 @@ public class KakaoServiceImpl implements KakaoService {
         }
     }
 
-    public void setDebug(boolean debug) {
-        this.debug = debug;
+    public static class Builder {
+
+        private String restKey;
+        private String adminKey;
+
+        Builder setRestKey(String restKey) {
+            this.restKey = restKey;
+            return this;
+        }
+
+        Builder setAdminKey(String adminKey) {
+            this.adminKey = adminKey;
+            return this;
+        }
+
+        public KakaoClient build() {
+            return new KakaoClient(restKey, adminKey);
+        }
     }
 }

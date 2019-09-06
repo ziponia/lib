@@ -19,7 +19,7 @@ public class TestApplication {
     public static void main(String[] args) throws IOException {
 
         // 자신이 카카오에서 발급받은 Rest Key 를 입력 해주세요.
-        KakaoService kakaoService = new KakaoServiceImpl("{You are kakao rest key}");
+        KakaoService kakaoClient = new KakaoServiceImpl("{You are kakao rest key}");
 
         // 웹 문서 검색
         WebSearchRequest request = new WebSearchRequest();
@@ -27,7 +27,7 @@ public class TestApplication {
         request.setPage(1);
         request.setSize(10);
         request.setSort(WebSearchRequest.Sort.ACCURACY);
-        WebSearchResponse res = kakaoService.webSearch(request);
+        WebSearchResponse res = kakaoClient.webSearch(request);
         System.out.println(res.toString());
     }
 }

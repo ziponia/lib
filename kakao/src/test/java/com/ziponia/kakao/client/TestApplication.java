@@ -8,7 +8,10 @@ import java.io.IOException;
 public class TestApplication {
 
     public static void main(String[] args) throws IOException {
-        KakaoService kakaoService = new KakaoServiceImpl("{You are kakao rest key}");
+        KakaoClient kakaoClient = KakaoClient.builder()
+                .setRestKey("{your rest key}")
+                .setAdminKey("{your admin key}")
+                .build();
 
         // 웹 문서 검색
         WebSearchRequest request = new WebSearchRequest();
@@ -16,7 +19,7 @@ public class TestApplication {
         request.setPage(1);
         request.setSize(10);
         request.setSort(WebSearchRequest.Sort.ACCURACY);
-        WebSearchResponse res = kakaoService.webSearch(request);
+        WebSearchResponse res = kakaoClient.webSearch(request);
         System.out.println(res.toString());
     }
 }
