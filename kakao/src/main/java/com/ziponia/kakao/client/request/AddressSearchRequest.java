@@ -5,15 +5,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class WebSearchRequest {
-
+public class AddressSearchRequest {
     private String query;
-    private Sort sort = Sort.ACCURACY;
     private Integer page;
     private Integer size;
-
-    public enum Sort {
-        ACCURACY,
-        RECENCY
-    }
 }

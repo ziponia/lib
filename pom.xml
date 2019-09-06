@@ -13,7 +13,7 @@
         <module>kakao</module>
     </modules>
     <properties>
-        <revision>1.2.1-SNAPSHOT</revision>
+        <revision>1.2.2-SNAPSHOT</revision>
         <github.global.server>github</github.global.server>
         <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>utf-8</project.reporting.outputEncoding>

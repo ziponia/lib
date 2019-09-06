@@ -5,7 +5,9 @@ import com.google.gson.reflect.TypeToken;
 import com.ziponia.kakao.client.exception.KakaoClientBadRequestException;
 import com.ziponia.kakao.client.exception.KakaoClientException;
 import com.ziponia.kakao.client.exception.KakaoClientUnAuthorizeException;
+import com.ziponia.kakao.client.request.AddressSearchRequest;
 import com.ziponia.kakao.client.request.WebSearchRequest;
+import com.ziponia.kakao.client.response.AddressSearchResponse;
 import com.ziponia.kakao.client.response.WebSearchResponse;
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
@@ -49,6 +51,32 @@ class KakaoClient {
         Map<String, String> query = new Gson().fromJson(js, typeToken.getType());
         Call<WebSearchResponse> call = kakaoClient.webSearch(REST_HEADER, query);
         Response<WebSearchResponse> res;
+        try {
+            res = call.execute();
+            if (!res.isSuccessful()) {
+                if (res.code() == 400) {
+                    throw new KakaoClientBadRequestException();
+                } else if (res.code() == 401) {
+                    throw new KakaoClientUnAuthorizeException();
+                } else {
+                    throw new KakaoClientException(res.message());
+                }
+            }
+            return res.body();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public AddressSearchResponse addressSearch(AddressSearchRequest request) {
+        if (request.getQuery() == null || request.getQuery().length() == 0) {
+            throw new KakaoClientBadRequestException("[query] 필드는 필수값입니다.");
+        }
+        String js = new Gson().toJson(request);
+        TypeToken<Map<String, String>> typeToken = new TypeToken<Map<String, String>>(){};
+        Map<String, String> query = new Gson().fromJson(js, typeToken.getType());
+        Call<AddressSearchResponse> call = kakaoClient.addressSearch(REST_HEADER, query);
+        Response<AddressSearchResponse> res;
         try {
             res = call.execute();
             if (!res.isSuccessful()) {
