@@ -7,9 +7,10 @@
     <groupId>com.ziponia</groupId>
     <artifactId>lib</artifactId>
     <packaging>pom</packaging>
-    <version>1.1-SNAPSHOT</version>
+    <version>1.1-RC-SNAPSHOT</version>
     <modules>
         <module>util</module>
+        <module>kakao</module>
     </modules>
     <properties>
         <github.global.server>github</github.global.server>
