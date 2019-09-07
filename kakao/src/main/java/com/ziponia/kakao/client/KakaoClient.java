@@ -20,7 +20,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import java.io.IOException;
 import java.util.Map;
 
-class KakaoClient {
+public class KakaoClient {
 
     private static final String BASE_URL = "https://dapi.kakao.com";
     private KakaoRepository kakaoClient;
