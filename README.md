@@ -1,9 +1,13 @@
 개인 라이브러리
 
+#example
+
 _pom.xml_
 
 ```xml
 <project>
+    
+    <!-- github 레포지토리를 추가합니다. -->
     <repositories>
         <repository>
             <id>library</id>
@@ -15,7 +19,7 @@ _pom.xml_
         </repository>
     </repositories>
 
-
+    <!-- 사용 할 라이브러리 디펜던시를 선언합니다. -->
     <dependencies>        
         <dependency>
             <groupId>com.ziponia</groupId>
@@ -25,3 +29,5 @@ _pom.xml_
     </dependencies>
 </project>
 ```
+
+- [kakao api](https://github.com/ziponia/lib/blob/master/kakao/README.md)
