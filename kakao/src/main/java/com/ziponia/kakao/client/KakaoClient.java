@@ -4,12 +4,15 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.ziponia.kakao.client.exception.KakaoClientBadRequestException;
 import com.ziponia.kakao.client.exception.KakaoClientException;
+import com.ziponia.kakao.client.exception.KakaoClientPermissionException;
 import com.ziponia.kakao.client.exception.KakaoClientUnAuthorizeException;
 import com.ziponia.kakao.client.request.AddressSearchRequest;
 import com.ziponia.kakao.client.request.Coord2RegionRequest;
+import com.ziponia.kakao.client.request.TranslateRequest;
 import com.ziponia.kakao.client.request.WebSearchRequest;
 import com.ziponia.kakao.client.response.AddressSearchResponse;
 import com.ziponia.kakao.client.response.Coord2RegionResponse;
+import com.ziponia.kakao.client.response.TranslateResponse;
 import com.ziponia.kakao.client.response.WebSearchResponse;
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
@@ -53,22 +56,7 @@ public class KakaoClient {
         };
         Map<String, String> query = new Gson().fromJson(js, typeToken.getType());
         Call<WebSearchResponse> call = kakaoClient.webSearch(REST_HEADER, query);
-        Response<WebSearchResponse> res;
-        try {
-            res = call.execute();
-            if (!res.isSuccessful()) {
-                if (res.code() == 400) {
-                    throw new KakaoClientBadRequestException();
-                } else if (res.code() == 401) {
-                    throw new KakaoClientUnAuthorizeException();
-                } else {
-                    throw new KakaoClientException(res.message());
-                }
-            }
-            return res.body();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        return exec(call);
     }
 
     public AddressSearchResponse addressSearch(AddressSearchRequest request) {
@@ -80,22 +68,7 @@ public class KakaoClient {
         };
         Map<String, String> query = new Gson().fromJson(js, typeToken.getType());
         Call<AddressSearchResponse> call = kakaoClient.addressSearch(REST_HEADER, query);
-        Response<AddressSearchResponse> res;
-        try {
-            res = call.execute();
-            if (!res.isSuccessful()) {
-                if (res.code() == 400) {
-                    throw new KakaoClientBadRequestException();
-                } else if (res.code() == 401) {
-                    throw new KakaoClientUnAuthorizeException();
-                } else {
-                    throw new KakaoClientException(res.message());
-                }
-            }
-            return res.body();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        return exec(call);
     }
 
     public Coord2RegionResponse coord2Region(Coord2RegionRequest request) {
@@ -107,7 +80,23 @@ public class KakaoClient {
         };
         Map<String, String> query = new Gson().fromJson(js, typeToken.getType());
         Call<Coord2RegionResponse> call = kakaoClient.coordsToRegion(REST_HEADER, query);
-        Response<Coord2RegionResponse> res;
+        return exec(call);
+    }
+
+    public TranslateResponse translate(TranslateRequest request) {
+        if (request.getQuery() == null || request.getSrc_lang() == null || request.getTarget_lang() == null) {
+            throw new KakaoClientBadRequestException("필수 파라메터가 선언되어있지 않습니다.");
+        }
+        String js = new Gson().toJson(request);
+        TypeToken<Map<String, String>> typeToken = new TypeToken<Map<String, String>>() {
+        };
+        Map<String, String> query = new Gson().fromJson(js, typeToken.getType());
+        Call<TranslateResponse> call = kakaoClient.translate(REST_HEADER, query);
+        return exec(call);
+    }
+
+    protected <T> T exec(Call<T> call) {
+        Response<T> res;
         try {
             res = call.execute();
             if (!res.isSuccessful()) {
@@ -115,8 +104,12 @@ public class KakaoClient {
                     throw new KakaoClientBadRequestException();
                 } else if (res.code() == 401) {
                     throw new KakaoClientUnAuthorizeException();
+                } else if (res.code() == 403) {
+                    throw new KakaoClientPermissionException();
+                } else if (res.code() == 500 || res.code() == 502) {
+                    throw new KakaoClientException();
                 } else {
-                    throw new KakaoClientException(res.message());
+                    throw new KakaoClientException(res.message() + "[" + res.code() + "]");
                 }
             }
             return res.body();
