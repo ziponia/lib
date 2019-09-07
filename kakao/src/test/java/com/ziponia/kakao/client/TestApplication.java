@@ -1,8 +1,10 @@
 package com.ziponia.kakao.client;
 
 import com.ziponia.kakao.client.request.AddressSearchRequest;
+import com.ziponia.kakao.client.request.Coord2RegionRequest;
 import com.ziponia.kakao.client.request.WebSearchRequest;
 import com.ziponia.kakao.client.response.AddressSearchResponse;
+import com.ziponia.kakao.client.response.Coord2RegionResponse;
 import com.ziponia.kakao.client.response.WebSearchResponse;
 
 import java.io.IOException;
@@ -19,6 +21,7 @@ public class TestApplication {
 
         webSearch();
         addressSearch();
+        coord2Region();
     }
 
     public static void webSearch() {
@@ -37,6 +40,14 @@ public class TestApplication {
         AddressSearchRequest request = new AddressSearchRequest();
         request.setQuery("서울특별시 금천구 가산동 345-33");
         AddressSearchResponse res = kakaoClient.addressSearch(request);
+        System.out.println(res.toString());
+    }
+
+    public static void coord2Region() {
+        Coord2RegionRequest request = new Coord2RegionRequest();
+        request.setX("127.1086228");
+        request.setY("37.4012191");
+        Coord2RegionResponse res = kakaoClient.coord2Region(request);
         System.out.println(res.toString());
     }
 }
