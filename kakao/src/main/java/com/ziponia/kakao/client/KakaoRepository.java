@@ -30,8 +30,8 @@ public interface KakaoRepository {
             @QueryMap Map<String, String> query
     );
 
-    @GET("/v1/translation/translate")
-    Call<TranslateResponse> translate(
+    @POST("/v1/translation/translate")
+    Call<TranslateResponse> translateLanguage(
             @Header("Authorization") String restKey,
             @QueryMap Map<String, String> query
     );

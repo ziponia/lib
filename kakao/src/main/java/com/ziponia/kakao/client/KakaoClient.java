@@ -25,19 +25,23 @@ import java.util.Map;
 
 public class KakaoClient {
 
-    private static final String BASE_URL = "https://dapi.kakao.com";
+    private static final String BASE_URL = "https://kapi.kakao.com";
+    private static final String BASE_URL_V2 = "https://dapi.kakao.com";
+
+    private KakaoRepository kakaoClientV2;
     private KakaoRepository kakaoClient;
     private String REST_HEADER;
 
     private KakaoClient(final String restKey, final String adminKey) {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-        Retrofit apiClient = new Retrofit.Builder()
+        Retrofit.Builder clientBuilder = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
-                .client(httpClient.build())
-                .baseUrl(BASE_URL)
-                .build();
+                .client(httpClient.build());
 
-        kakaoClient = apiClient.create(KakaoRepository.class);
+        kakaoClient = clientBuilder.baseUrl(BASE_URL)
+                .build().create(KakaoRepository.class);
+        kakaoClientV2 = clientBuilder.baseUrl(BASE_URL_V2)
+                .build().create(KakaoRepository.class);
 
         this.REST_HEADER = "KakaoAK " + restKey;
     }
@@ -55,7 +59,7 @@ public class KakaoClient {
         TypeToken<Map<String, String>> typeToken = new TypeToken<Map<String, String>>() {
         };
         Map<String, String> query = new Gson().fromJson(js, typeToken.getType());
-        Call<WebSearchResponse> call = kakaoClient.webSearch(REST_HEADER, query);
+        Call<WebSearchResponse> call = kakaoClientV2.webSearch(REST_HEADER, query);
         return exec(call);
     }
 
@@ -67,7 +71,7 @@ public class KakaoClient {
         TypeToken<Map<String, String>> typeToken = new TypeToken<Map<String, String>>() {
         };
         Map<String, String> query = new Gson().fromJson(js, typeToken.getType());
-        Call<AddressSearchResponse> call = kakaoClient.addressSearch(REST_HEADER, query);
+        Call<AddressSearchResponse> call = kakaoClientV2.addressSearch(REST_HEADER, query);
         return exec(call);
     }
 
@@ -79,7 +83,7 @@ public class KakaoClient {
         TypeToken<Map<String, String>> typeToken = new TypeToken<Map<String, String>>() {
         };
         Map<String, String> query = new Gson().fromJson(js, typeToken.getType());
-        Call<Coord2RegionResponse> call = kakaoClient.coordsToRegion(REST_HEADER, query);
+        Call<Coord2RegionResponse> call = kakaoClientV2.coordsToRegion(REST_HEADER, query);
         return exec(call);
     }
 
@@ -91,7 +95,7 @@ public class KakaoClient {
         TypeToken<Map<String, String>> typeToken = new TypeToken<Map<String, String>>() {
         };
         Map<String, String> query = new Gson().fromJson(js, typeToken.getType());
-        Call<TranslateResponse> call = kakaoClient.translate(REST_HEADER, query);
+        Call<TranslateResponse> call = kakaoClient.translateLanguage(REST_HEADER, query);
         return exec(call);
     }
 
