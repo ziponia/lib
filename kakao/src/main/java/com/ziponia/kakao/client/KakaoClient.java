@@ -130,12 +130,12 @@ public class KakaoClient {
         private String restKey;
         private String adminKey;
 
-        Builder setRestKey(String restKey) {
+        public Builder setRestKey(String restKey) {
             this.restKey = restKey;
             return this;
         }
 
-        Builder setAdminKey(String adminKey) {
+        public Builder setAdminKey(String adminKey) {
             this.adminKey = adminKey;
             return this;
         }
