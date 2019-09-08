@@ -10,6 +10,7 @@
         <module>util</module>
         <module>kakao</module>
         <module>11st</module>
+        <module>google</module>
     </modules>
     <properties>
         <github.global.server>github</github.global.server>
