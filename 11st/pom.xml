@@ -7,19 +7,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>kakao</artifactId>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>7</source>
-                    <target>7</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+    <artifactId>11st</artifactId>
 
     <dependencies>
         <dependency>
@@ -37,14 +25,22 @@
             <artifactId>converter-gson</artifactId>
             <version>2.6.1</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>com.squareup.retrofit2</groupId>
+            <artifactId>converter-jaxb</artifactId>
+            <version>2.6.1</version>
+        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.tickaroo.tikxml</groupId>-->
+<!--            <artifactId>annotation</artifactId>-->
+<!--            <version>0.8.15</version>-->
+<!--        </dependency>-->
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.16.20</version>
             <scope>provided</scope>
         </dependency>
-
     </dependencies>
-
 </project>

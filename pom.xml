@@ -5,10 +5,11 @@
     <groupId>com.ziponia</groupId>
     <artifactId>lib</artifactId>
     <packaging>pom</packaging>
-    <version>1.5-SNAPSHOT</version>
+    <version>1.6-SNAPSHOT</version>
     <modules>
         <module>util</module>
         <module>kakao</module>
+        <module>11st</module>
     </modules>
     <properties>
         <github.global.server>github</github.global.server>
