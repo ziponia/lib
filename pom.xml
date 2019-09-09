@@ -11,6 +11,7 @@
         <module>kakao</module>
         <module>11st</module>
         <module>google</module>
+        <module>iamport</module>
     </modules>
     <properties>
         <github.global.server>github</github.global.server>
