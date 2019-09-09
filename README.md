@@ -70,7 +70,7 @@ _예)_
 
 더 많은 분기는 [이곳](https://jitpack.io/#ziponia/lib) 에서 확인 하세요.
 
-## 현재 지원되는 모듈 리스트
+## 현재 지원되는 모듈 리스트 참조 Docs
 
 - [kakao api 모듈](https://github.com/ziponia/lib/blob/master/kakao/README.md)
     - [웹 검색](https://developers.kakao.com/docs/restapi/search#웹문서-검색)
@@ -85,4 +85,7 @@ _예)_
         - [주변 장소 찾기](https://developers.google.com/places/web-service/search#PlaceSearchRequests)
 - [아임포트 결제 모듈](https://github.com/ziponia/lib/tree/master/iamport/README.md)
     - [간편결제](https://api.iamport.kr/#!/subscribe/onetime)
-    - [구매자 빌링키 관리](https://api.iamport.kr/#!/subscribe.customer)     
+    - [구매자 빌링키 관리](https://api.iamport.kr/#!/subscribe.customer)
+- [Naver api 모듈](https://github.com/ziponia/lib/blob/master/naver/README.md)
+    - 검색
+        - [뉴스검색](https://developers.naver.com/docs/search/news/)
