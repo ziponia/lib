@@ -83,6 +83,8 @@ _예)_
 - [Google api 모듈](https://github.com/ziponia/lib/tree/master/google/README.md)
     - [maps](https://developers.google.com/places/web-service/intro)
         - [주변 장소 찾기](https://developers.google.com/places/web-service/search#PlaceSearchRequests)
+    - [youtube](https://developers.google.com/youtube/v3/docs/?hl=ko)
+        - [동영상 검색](https://developers.google.com/youtube/v3/docs/search/list?hl=ko)
 - [아임포트 결제 모듈](https://github.com/ziponia/lib/tree/master/iamport/README.md)
     - [간편결제](https://api.iamport.kr/#!/subscribe/onetime)
     - [구매자 빌링키 관리](https://api.iamport.kr/#!/subscribe.customer)
