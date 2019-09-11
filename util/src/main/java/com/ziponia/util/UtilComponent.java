@@ -2,9 +2,7 @@ package com.ziponia.util;
 
 import javax.crypto.Cipher;
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.security.Key;
-import java.security.MessageDigest;
 import java.sql.Timestamp;
 import java.util.UUID;
 import java.util.regex.Matcher;
@@ -74,33 +72,6 @@ public class UtilComponent implements Serializable {
     public static Timestamp beforeMinute(Timestamp currentTimestamp, int beforeMinute) {
         int targetTime = 60 * beforeMinute * 1000; // 초
         return new Timestamp(currentTimestamp.getTime() - targetTime);
-    }
-
-    /**
-     * 문자열을 SHA-512 로 변환합니다.
-     *
-     * @param str target String
-     * @return java.lang.String
-     */
-    public static String encryptSHA512(String str) {
-
-        try {
-
-            MessageDigest digest = MessageDigest.getInstance("SHA-512");
-            byte[] hash = digest.digest(str.getBytes(StandardCharsets.UTF_8));
-            StringBuilder hexString = new StringBuilder();
-
-            for (byte aHash : hash) {
-                String hex = Integer.toHexString(0xff & aHash);
-                if (hex.length() == 1) hexString.append('0');
-                hexString.append(hex);
-            }
-
-            return hexString.toString();
-
-        } catch (Exception ex) {
-            throw new RuntimeException(ex);
-        }
     }
 
     /**
