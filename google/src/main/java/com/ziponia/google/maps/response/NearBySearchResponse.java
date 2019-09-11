@@ -1,28 +1,23 @@
 package com.ziponia.google.maps.response;
 
 import com.ziponia.google.maps.share.Location;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Value;
 
 import java.util.List;
 
-@Getter
-@Setter
-@ToString
+@Value
 public class NearBySearchResponse {
 
     private Object[] html_attributions;
     private String next_page_token;
     private List<Result> results;
 
-    @Getter
-    @Setter
-    @ToString
+    @Value
     public static class Result {
         private Geometry geometry;
         private String icon;
         private String id;
+        private String name;
         private Opening opening_hours;
         private List<Photo> photos;
         private String place_id;
@@ -35,15 +30,11 @@ public class NearBySearchResponse {
         private int user_ratings_total;
         private String vicinity;
 
-        @Getter
-        @Setter
-        @ToString
+        @Value
         public static class Geometry {
             private Location location;
 
-            @Getter
-            @Setter
-            @ToString
+            @Value
             public static class Viewport {
 
                 private Location northeast;
@@ -51,22 +42,19 @@ public class NearBySearchResponse {
             }
         }
 
-        @Getter
-        @Setter
-        @ToString
+        @Value
         public static class Opening {
             private boolean open_now;
         }
 
-        @Getter
-        @Setter
-        @ToString
+        @Value
         public static class Photo {
             private int height;
             private int width;
             private String photo_reference;
         }
 
+        @Value
         public static class PlusCode {
             private String compound_code;
             private String global_code;
