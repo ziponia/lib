@@ -3,16 +3,16 @@ package com.ziponia.kakao.client;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.ziponia.kakao.client.exception.*;
-import com.ziponia.kakao.client.request.AddressSearchRequest;
-import com.ziponia.kakao.client.request.Coord2RegionRequest;
-import com.ziponia.kakao.client.request.TranslateRequest;
-import com.ziponia.kakao.client.request.WebSearchRequest;
-import com.ziponia.kakao.client.response.AddressSearchResponse;
-import com.ziponia.kakao.client.response.Coord2RegionResponse;
-import com.ziponia.kakao.client.response.TranslateResponse;
-import com.ziponia.kakao.client.response.WebSearchResponse;
+import com.ziponia.kakao.client.request.*;
+import com.ziponia.kakao.client.response.*;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.Request;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 
+import java.lang.reflect.Field;
+import java.util.HashMap;
 import java.util.Map;
 
 public class KakaoClient extends KakaoBaseClient {
@@ -70,5 +70,25 @@ public class KakaoClient extends KakaoBaseClient {
         return exec(call);
     }
 
+    public ThumbnailCropResponse thumbnailCrop(ThumbnailCropRequest request) {
+        Map<String, RequestBody> query = new HashMap<>();
 
+        query.put("width", RequestBody.create(
+                MultipartBody.FORM, request.getWidth().toString()
+        ));
+        query.put("height", RequestBody.create(
+                MultipartBody.FORM, request.getHeight().toString()
+        ));
+
+        RequestBody requestFile =
+                RequestBody.create(
+                        MediaType.parse("image/*"),
+                        request.getFile()
+                );
+
+        MultipartBody.Part body =
+                MultipartBody.Part.createFormData("file", request.getFile().getName(), requestFile);
+        Call<ThumbnailCropResponse> call = kakaoClient.thumbnailCrop(REST_HEADER, query, body);
+        return exec(call);
+    }
 }

@@ -1,10 +1,8 @@
 package com.ziponia.kakao.client;
 
-import com.ziponia.kakao.client.request.TranslateRequest;
-import com.ziponia.kakao.client.response.AddressSearchResponse;
-import com.ziponia.kakao.client.response.Coord2RegionResponse;
-import com.ziponia.kakao.client.response.TranslateResponse;
-import com.ziponia.kakao.client.response.WebSearchResponse;
+import com.ziponia.kakao.client.response.*;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -35,4 +33,11 @@ public interface KakaoRepository {
             @Header("Authorization") String restKey,
             @QueryMap Map<String, String> query
     );
+
+    @Multipart
+    @POST("/v1/vision/thumbnail/crop")
+    Call<ThumbnailCropResponse> thumbnailCrop(
+            @Header("Authorization") String restKey,
+            @PartMap() Map<String, RequestBody> query,
+            @Part MultipartBody.Part file);
 }

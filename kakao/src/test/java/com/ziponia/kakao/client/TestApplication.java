@@ -1,14 +1,9 @@
 package com.ziponia.kakao.client;
 
-import com.ziponia.kakao.client.request.AddressSearchRequest;
-import com.ziponia.kakao.client.request.Coord2RegionRequest;
-import com.ziponia.kakao.client.request.TranslateRequest;
-import com.ziponia.kakao.client.request.WebSearchRequest;
-import com.ziponia.kakao.client.response.AddressSearchResponse;
-import com.ziponia.kakao.client.response.Coord2RegionResponse;
-import com.ziponia.kakao.client.response.TranslateResponse;
-import com.ziponia.kakao.client.response.WebSearchResponse;
+import com.ziponia.kakao.client.request.*;
+import com.ziponia.kakao.client.response.*;
 
+import java.io.File;
 import java.io.IOException;
 
 public class TestApplication {
@@ -21,10 +16,11 @@ public class TestApplication {
                 .setAdminKey("{your admin key}")
                 .build();
 
-        webSearch();
-        addressSearch();
-        coord2Region();
-        translate();
+        // webSearch();
+        // addressSearch();
+        // coord2Region();
+        // translate();
+        // thumbnailCrop();
     }
 
     public static void webSearch() {
@@ -61,5 +57,22 @@ public class TestApplication {
         request.setTarget_lang("en");
         TranslateResponse res = kakaoClient.translate(request);
         System.out.println(res.toString());
+    }
+
+    public static void thumbnailCrop() {
+        File file = new File("/Users/ziponia/Downloads/sample_image.png");
+
+        if (file.exists()) {
+            ThumbnailCropRequest request = ThumbnailCropRequest.builder()
+                    .file(file)
+                    .width(250)
+                    .height(250)
+                    .build();
+
+            ThumbnailCropResponse res = kakaoClient.thumbnailCrop(request);
+            System.out.println(res.getThumbnail_image_url());
+        } else {
+            System.out.println("file not found");
+        }
     }
 }

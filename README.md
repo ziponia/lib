@@ -77,6 +77,7 @@ _예)_
     - [주소 검색](https://developers.kakao.com/docs/restapi/local#주소-검색)
     - [좌표-행정구역정보-변환](https://developers.kakao.com/docs/restapi/local#좌표-행정구역정보-변환)
     - [번역](https://developers.kakao.com/docs/restapi/translation#문장번역)   
+    - [썸네일 생성](https://developers.kakao.com/docs/restapi/vision#썸네일-생성)
 - [11번가 상품 모듈](https://github.com/ziponia/lib/blob/master/11st/README.md)
     - [상품검색](http://openapi.11st.co.kr/openapi/OpenApiGuide.tmall?expCnt=1)
     - [상품정보 조회](http://openapi.11st.co.kr/openapi/OpenApiGuide.tmall?commonGuideNo=3)
