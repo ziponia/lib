@@ -15,9 +15,9 @@ _maven_
     <repositories>
         <repository>
             <id>jitpack.io</id>
-		    <url>https://jitpack.io</url>
-		</repository>
-	</repositories>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
 </project>
 ```
 
@@ -45,26 +45,24 @@ _maven_
 <dependency>
     <groupId>com.github.ziponia.lib</groupId>
     <artifactId>google</artifactId>
-    <version>master-SNAPSHOT</version>
+    <version>4b8ddcf00f</version>
 </dependency>
 ```
 
 _Gradle_
 
 ```groovy
-implementation 'com.github.ziponia.lib:google:master-SNAPSHOT'
+implementation 'com.github.ziponia.lib:google:4b8ddcf00f'
 ```
 
-> 이 라이브러리는 아직 개발중입니다. master-SNAPSHOT 을 버전으로 지정함으로써, 가장 최신의 커밋내용을 불러 올 수 있습니다.
-
-특정 커밋버전을 이용하려면 commit 의 Hash Shortcut 을 이용하세요.
+> 이 라이브러리는 아직 개발중입니다. version 레이블에 master-SNAPSHOT 을 버전으로 지정함으로써, 가장 최신의 커밋내용을 불러 올 수 있습니다.
 
 _예)_
 ```xml
 <dependency>
     <groupId>com.github.ziponia.lib</groupId>
     <artifactId>{library name}</artifactId>
-    <version>67e1f0d256</version>
+    <version>master-SNAPSHOT</version>
 </dependency>
 ```
 
