@@ -1,12 +1,11 @@
 package com.ziponia.google.maps.request;
 
+import com.google.gson.annotations.SerializedName;
 import com.ziponia.google.maps.share.PlaceType;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-
-import java.util.Locale;
 
 @Getter
 @Setter
@@ -20,12 +19,21 @@ public class NearBySearchRequest {
     // 1 ~ 50000
     private Integer radius;
 
-    private Locale language;
+    private String language;
     private PlaceType type;
+    private String keyword;
 
-    public enum RankBy {prominence, distance}
+    // 0 ~ 4
+    private Integer minprice;
 
-    public String getLanguage() {
-        return language.getLanguage();
+    // 0 ~ 4
+    private Integer maxprice;
+    private String name;
+    private Boolean opennow;
+    private String pagetoken;
+
+    public enum RankBy {
+        @SerializedName("prominence") PROMINENCE,
+        @SerializedName("distance") DISTANCE
     }
 }
