@@ -1,6 +1,7 @@
 package com.ziponia.google.maps;
 
 import com.ziponia.google.maps.request.NearBySearchRequest;
+import com.ziponia.google.maps.request.PhotosByPlaceRequest;
 import com.ziponia.google.maps.response.NearBySearchResponse;
 import com.ziponia.google.maps.share.PlaceType;
 import com.ziponia.google.youtube.YoutubeClient;
@@ -22,6 +23,7 @@ class GoogleClientTests {
 
 //         nearByPlace();
 //        youtubeSearch();
+        photosByPlace();
     }
 
     public static void nearByPlace() {
@@ -45,5 +47,15 @@ class GoogleClientTests {
         SearchResponse res = youtubeClient.search(request);
 
         System.out.println(res.toString());
+    }
+
+    public static void photosByPlace() {
+        PhotosByPlaceRequest request = PhotosByPlaceRequest.builder()
+                .maxwidth(400)
+                .photoreference("CmRaAAAAcgvY2CpDZ-bdKsMpgmQEmL0sA70tWZfVPdycWvvGL5OopeH_H7PYXwAdeGtggYjZ-WGm_HFh1p4SXpYAYWZ_Qs-UF5V1ycxDazdPN47CawHiNBHaHj1ZRwBJTLcqhRskEhBPKBWnHLAgY_AYvePUew4jGhQ27PcKARd0LdaziaOq8UxjgVqMpA")
+                .build();
+
+        String res = mapsClient.photosByPlace(request);
+        System.out.println(res);
     }
 }

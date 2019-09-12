@@ -1,8 +1,5 @@
 package com.ziponia.iamport.response;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 import lombok.Value;
 
 @Value

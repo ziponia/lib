@@ -16,8 +16,8 @@ import java.util.Map;
 
 public abstract class GoogleBaseClient {
 
-    private static final String BASE_URL_MAPS = "https://maps.googleapis.com";
-    private static final String BASE_URL_YOUTUBE = "https://www.googleapis.com";
+    public static final String BASE_URL_MAPS = "https://maps.googleapis.com";
+    public static final String BASE_URL_YOUTUBE = "https://www.googleapis.com";
 
     public static String API_KEY;
 

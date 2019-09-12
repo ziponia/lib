@@ -2,16 +2,14 @@ package com.ziponia.kakao.client;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.ziponia.kakao.client.exception.*;
+import com.ziponia.kakao.client.exception.KakaoClientBadRequestException;
 import com.ziponia.kakao.client.request.*;
 import com.ziponia.kakao.client.response.*;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
-import okhttp3.Request;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 
-import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 

@@ -84,6 +84,7 @@ _예)_
 - [Google api 모듈](https://github.com/ziponia/lib/tree/master/google/README.md)
     - [maps](https://developers.google.com/places/web-service/intro)
         - [주변 장소 찾기](https://developers.google.com/places/web-service/search#PlaceSearchRequests)
+        - [장소 사진](https://developers.google.com/places/web-service/photos)
     - [youtube](https://developers.google.com/youtube/v3/docs/?hl=ko)
         - [동영상 검색](https://developers.google.com/youtube/v3/docs/search/list?hl=ko)
 - [아임포트 결제 모듈](https://github.com/ziponia/lib/tree/master/iamport/README.md)

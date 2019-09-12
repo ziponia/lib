@@ -1,6 +1,7 @@
 package com.ziponia.kakao.client.request;
 
 import lombok.*;
+
 import java.io.File;
 
 @Getter

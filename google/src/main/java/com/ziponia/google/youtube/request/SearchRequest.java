@@ -1,13 +1,11 @@
 package com.ziponia.google.youtube.request;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.reflect.TypeToken;
 import lombok.*;
 
 import java.io.Serializable;
-import java.util.*;
+import java.util.Date;
 
 
 @Getter
