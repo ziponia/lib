@@ -88,6 +88,8 @@ _예)_
 - [아임포트 결제 모듈](https://github.com/ziponia/lib/tree/master/iamport/README.md)
     - [간편결제](https://api.iamport.kr/#!/subscribe/onetime)
     - [구매자 빌링키 관리](https://api.iamport.kr/#!/subscribe.customer)
+    - [결제내역 조회](https://api.iamport.kr/#!/payments/getPaymentListByImpUid)
+    - [아임포트 고유 거래번호로 결제내역 조회](https://api.iamport.kr/#!/payments/getPaymentByImpUid)
 - [Naver api 모듈](https://github.com/ziponia/lib/blob/master/naver/README.md)
     - 검색
         - [뉴스검색](https://developers.naver.com/docs/search/news/)
