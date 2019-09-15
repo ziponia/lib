@@ -113,8 +113,4 @@ public class OneTimeRequest implements Serializable {
      * 결제성공 시 통지될 Notification URL(Webhook URL)
      */
     private String notice_url;
-
-    public String getPg() {
-        return pg == null ? null : pg.getName();
-    }
 }

@@ -1,13 +1,16 @@
 package com.ziponia.iamport;
 
+import com.google.gson.Gson;
 import com.ziponia.iamport.request.BillingKeyRequest;
 import com.ziponia.iamport.request.OneTimeRequest;
 import com.ziponia.iamport.request.PaymentByBillingKeyRequest;
+import com.ziponia.iamport.request.PaymentsRequest;
 import com.ziponia.iamport.response.BillingKey;
 import com.ziponia.iamport.response.IamportResponse;
 import com.ziponia.iamport.response.PaymentResponse;
 
 import java.util.Date;
+import java.util.List;
 
 class IamportClientTest {
 
@@ -32,19 +35,25 @@ class IamportClientTest {
                 .build();
 
         // 빌링 키를 발급합니다.
-        requestBillingKeyTest();
+        //requestBillingKeyTest();
 
         // 빌링키를 조회합니다.
-        findBillingKeyByCustomerTest();
+        //findBillingKeyByCustomerTest();
 
         // 발급 된 빌링키로 결제를 요청합니다.
-        requestPaymentByBillingKeyTest();
+        //requestPaymentByBillingKeyTest();
 
         // 발급된 빌링키를 삭제합니다.
-        removeBillingKeyTest();
+        //removeBillingKeyTest();
 
         // 1회용 결제를 요청합니다.
-        paymentRequestTest();
+        //paymentRequestTest();
+
+        // 결제내역을 조회합니다.
+        // paymentsTest();
+
+        // 결제고유번호로 거래내역을 확인합니다.
+        // paymentsByImpUid();
     }
 
     private static void requestBillingKeyTest() {
@@ -97,5 +106,20 @@ class IamportClientTest {
 
         IamportResponse<PaymentResponse> result = client.requestPayment(payment);
         System.out.println(result.getResponse().toString());
+    }
+
+    private static void paymentsTest() {
+        PaymentsRequest request = PaymentsRequest.builder()
+                .imp_uid("imp_448280090638")
+                .build();
+        IamportResponse<List<PaymentResponse>> result = client.payments(request);
+        String json = new Gson().toJson(result);
+        System.out.println(json);
+    }
+
+    private static void paymentsByImpUid() {
+        IamportResponse<PaymentResponse> result = client.paymentsByImpUid("imp_448280090638");
+        String json = new Gson().toJson(result);
+        System.out.println(json);
     }
 }

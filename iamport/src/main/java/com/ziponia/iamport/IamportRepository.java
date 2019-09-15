@@ -6,6 +6,7 @@ import com.ziponia.iamport.response.PaymentResponse;
 import retrofit2.Call;
 import retrofit2.http.*;
 
+import java.util.List;
 import java.util.Map;
 
 public interface IamportRepository {
@@ -49,6 +50,18 @@ public interface IamportRepository {
     Call<IamportResponse<PaymentResponse>> requestPayment(
             @Header("Authorization") String access_token,
             @FieldMap Map<String, String> query
+    );
+
+    @GET("/payments")
+    Call<IamportResponse<List<PaymentResponse>>> payments(
+            @Header("Authorization") String access_token,
+            @Query("imp_uid[]") String[] imp_uid
+    );
+
+    @GET("/payments/{imp_uid}")
+    Call<IamportResponse<PaymentResponse>> paymentsByImpUid(
+            @Header("Authorization") String access_token,
+            @Path("imp_uid") String imp_uid
     );
 
 }

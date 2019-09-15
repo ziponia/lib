@@ -76,8 +76,8 @@ public abstract class IamportBaseClient {
             res = call.execute();
             if (!res.isSuccessful()) {
                 System.out.println("Un Successful");
-                assert res.body() != null;
-                System.out.println(res.body().toString());
+                assert res.errorBody() != null;
+                System.out.println(res.message());
             }
             return res.body();
         } catch (IOException e) {
