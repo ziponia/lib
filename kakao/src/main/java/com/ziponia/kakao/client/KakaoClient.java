@@ -89,4 +89,13 @@ public class KakaoClient extends KakaoBaseClient {
         Call<ThumbnailCropResponse> call = kakaoClient.thumbnailCrop(REST_HEADER, query, body);
         return exec(call);
     }
+
+    public VclipResponse vclip(VclipRequest request) {
+        String js = new Gson().toJson(request);
+        TypeToken<Map<String, String>> typeToken = new TypeToken<Map<String, String>>() {
+        };
+        Map<String, String> query = new Gson().fromJson(js, typeToken.getType());
+        Call<VclipResponse> call = kakaoClientV2.vclip(REST_HEADER, query);
+        return exec(call);
+    }
 }

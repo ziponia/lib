@@ -21,6 +21,7 @@ public class TestApplication {
         // coord2Region();
         // translate();
         // thumbnailCrop();
+        // vclipTest();
     }
 
     public static void webSearch() {
@@ -74,5 +75,14 @@ public class TestApplication {
         } else {
             System.out.println("file not found");
         }
+    }
+
+    public static void vclipTest() {
+        VclipRequest request = VclipRequest.builder()
+                .query("짱구는 못말려")
+                .build();
+
+        VclipResponse res = kakaoClient.vclip(request);
+        System.out.println(res.toString());
     }
 }

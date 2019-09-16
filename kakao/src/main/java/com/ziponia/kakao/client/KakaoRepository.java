@@ -40,4 +40,10 @@ public interface KakaoRepository {
             @Header("Authorization") String restKey,
             @PartMap() Map<String, RequestBody> query,
             @Part MultipartBody.Part file);
+
+    @GET("/v2/search/vclip")
+    Call<VclipResponse> vclip(
+            @Header("Authorization") String restKey,
+            @QueryMap Map<String, String> query
+    );
 }
