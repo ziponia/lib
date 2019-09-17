@@ -70,6 +70,7 @@ _예)_
 
 ## 현재 지원되는 모듈 리스트 참조 Docs
 
+- [유틸리티](https://github.com/ziponia/lib/blob/master/util/README.md)
 - [kakao api 모듈](https://github.com/ziponia/lib/blob/master/kakao/README.md)
     - [웹 검색](https://developers.kakao.com/docs/restapi/search#웹문서-검색)
     - [주소 검색](https://developers.kakao.com/docs/restapi/local#주소-검색)
