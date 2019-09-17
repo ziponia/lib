@@ -1,6 +1,8 @@
 # 써드파티 Rest Client Repository
 
 [![](https://jitci.com/gh/ziponia/lib/svg)](https://jitci.com/gh/ziponia/lib)
+[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
+[![Generic badge](https://img.shields.io/badge/version-0.1.6-green.svg)](https://shields.io/)
 
 개발하면서, 자주 쓸만한 Rest Client 를 정리 해 논 디펜던시 입니다.
 
