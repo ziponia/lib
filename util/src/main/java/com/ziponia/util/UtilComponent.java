@@ -175,4 +175,16 @@ public class UtilComponent implements Serializable {
 
         return decrypted;
     }
+
+    /**
+     * 확률을 입력하여, 해당 확률 만큼 true 를 반환합니다.
+     *
+     * 예를들어, UtilComponent.percentage(10) 을 100 번 돌린다고 가정하면,
+     * 10% 만큼의 true 가 나올 것입니다.
+     *
+     * @param percent 확률 수치, ex) 50 = 50%, 30 = 30%
+     */
+    public static boolean percentage(double percent) {
+        return Math.random() <= percent * 0.01;
+    }
 }
