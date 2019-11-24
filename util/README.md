@@ -188,7 +188,7 @@ class Main {
         PercentageList<String> monster_items = new PercentageList<String>();
         monster_items.add("목걸이", 30);
         monster_items.add("검", 60);
-        monster_items.add("목걸이", 10);
+        monster_items.add("벨트", 10);
 
         // 몬스터를 퇴치 합니다.
         monster_items.get(); // 검
