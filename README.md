@@ -6,6 +6,8 @@
 
 개발하면서, 자주 쓸만한 Rest Client 를 정리 해 논 디펜던시 입니다.
 
+Usage Example <a href="https://fe.ziponia.com" target="_blank">https://fe.ziponia.com</a>
+
 # Getting Start
 
 이 Repository 사용하려면, 먼저 jitpack 레포지토리를 추가하세요.
