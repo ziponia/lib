@@ -8,6 +8,8 @@ import java.io.File;
 @Setter
 @ToString
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class ThumbnailCropRequest {
 
     @NonNull
