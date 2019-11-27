@@ -70,23 +70,36 @@ public class KakaoClient extends KakaoBaseClient {
 
     public ThumbnailCropResponse thumbnailCrop(ThumbnailCropRequest request) {
         Map<String, RequestBody> query = new HashMap<>();
+        Call<ThumbnailCropResponse> call;
 
-        query.put("width", RequestBody.create(
-                MultipartBody.FORM, request.getWidth().toString()
-        ));
-        query.put("height", RequestBody.create(
-                MultipartBody.FORM, request.getHeight().toString()
-        ));
+        if (request.getImage_url() != null) {
+            String js = new Gson().toJson(request);
+            TypeToken<Map<String, String>> typeToken = new TypeToken<Map<String, String>>() {
+            };
+            query = new Gson().fromJson(js, typeToken.getType());
+            call = kakaoClient.thumbnailCropByImageUrl(REST_HEADER, query);
+        } else if (request.getFile() != null) {
 
-        RequestBody requestFile =
-                RequestBody.create(
-                        MediaType.parse("image/*"),
-                        request.getFile()
-                );
+            query.put("width", RequestBody.create(
+                    MultipartBody.FORM, request.getWidth().toString()
+            ));
+            query.put("height", RequestBody.create(
+                    MultipartBody.FORM, request.getHeight().toString()
+            ));
+            RequestBody requestFile =
+                    RequestBody.create(
+                            MediaType.parse("image/*"),
+                            request.getFile()
+                    );
 
-        MultipartBody.Part body =
-                MultipartBody.Part.createFormData("file", request.getFile().getName(), requestFile);
-        Call<ThumbnailCropResponse> call = kakaoClient.thumbnailCrop(REST_HEADER, query, body);
+            MultipartBody.Part body =
+                    MultipartBody.Part.createFormData("file", request.getFile().getName(), requestFile);
+            call = kakaoClient.thumbnailCrop(REST_HEADER, query, body);
+        } else {
+            throw new KakaoClientBadRequestException("image_url 과 file 중 하나는 필수입니다.");
+        }
+
+
         return exec(call);
     }
 

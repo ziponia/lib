@@ -12,8 +12,8 @@ import java.io.File;
 @NoArgsConstructor
 public class ThumbnailCropRequest {
 
-    @NonNull
     private File file;
+    private String image_url;
 
     @NonNull
     private Integer width;

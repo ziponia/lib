@@ -21,6 +21,7 @@ public class TestApplication {
         // coord2Region();
         // translate();
         // thumbnailCrop();
+        // thumbnailCropByImageUrl();
         // vclipTest();
     }
 
@@ -75,6 +76,17 @@ public class TestApplication {
         } else {
             System.out.println("file not found");
         }
+    }
+
+    public static void thumbnailCropByImageUrl() {
+        ThumbnailCropRequest request = ThumbnailCropRequest.builder()
+                .image_url("https://t1.daumcdn.net/liveboard/feelthemovie/1c554b76d1ca4a08bd3e6750aecd3337.JPG")
+                .width(250)
+                .height(250)
+                .build();
+
+        ThumbnailCropResponse res = kakaoClient.thumbnailCrop(request);
+        System.out.println(res.toString());
     }
 
     public static void vclipTest() {

@@ -41,6 +41,12 @@ public interface KakaoRepository {
             @PartMap() Map<String, RequestBody> query,
             @Part MultipartBody.Part file);
 
+    @FormUrlEncoded
+    @POST("/v1/vision/thumbnail/crop")
+    Call<ThumbnailCropResponse> thumbnailCropByImageUrl(
+            @Header("Authorization") String restKey,
+            @FieldMap() Map<String, RequestBody> query);
+
     @GET("/v2/search/vclip")
     Call<VclipResponse> vclip(
             @Header("Authorization") String restKey,
