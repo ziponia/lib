@@ -2,6 +2,7 @@ package com.ziponia.kakao.client.response;
 
 import lombok.Value;
 
+import java.util.Date;
 import java.util.List;
 
 @Value
@@ -24,5 +25,6 @@ public class VclipResponse {
         private String thumbnail;
         private String url;
         private String author;
+        private Date datetime;
     }
 }
