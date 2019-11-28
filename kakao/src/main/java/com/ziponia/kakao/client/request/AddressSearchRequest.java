@@ -1,10 +1,13 @@
 package com.ziponia.kakao.client.request;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class AddressSearchRequest {
     private String query;
     private Integer page;

@@ -1,12 +1,13 @@
 package com.ziponia.kakao.client.request;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @Getter
 @Setter
 @ToString
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Coord2RegionRequest {
     private String x;
     private String y;
