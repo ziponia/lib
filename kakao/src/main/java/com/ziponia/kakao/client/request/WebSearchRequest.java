@@ -10,6 +10,8 @@ import lombok.*;
 public class WebSearchRequest {
 
     private String query;
+
+    @Builder.Default
     private Sort sort = Sort.ACCURACY;
     private Integer page;
     private Integer size;

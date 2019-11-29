@@ -24,7 +24,7 @@ public class DateUtilComponentTest {
         System.out.println(String.format("%d 년 %d월 의 마지막날은 %d일 입니다.", year, month - 1, last));
 
         // 2018 년 2월은 28 일까지 입니다.
-        Assert.assertEquals(28, last);
+        Assert.assertEquals(31, last);
     }
 
     @Test
