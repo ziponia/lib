@@ -24,4 +24,21 @@ public class YoutubeClient extends GoogleBaseClient {
     public <T> T exec(Call<T> call) {
         return super.exec(call);
     }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static class Builder {
+        private String apiKey;
+
+        public Builder apiKey(String apiKey) {
+            this.apiKey = apiKey;
+            return this;
+        }
+
+        public YoutubeClient build() {
+            return new YoutubeClient(apiKey);
+        }
+    }
 }

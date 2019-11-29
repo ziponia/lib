@@ -16,10 +16,14 @@ class GoogleClientTests {
     private static YoutubeClient youtubeClient;
 
     public static void main(String[] args) {
-        mapsClient = new GoogleMapsClient(API_KEY);
-        youtubeClient = new YoutubeClient(API_KEY);
+        mapsClient = GoogleMapsClient.builder()
+                .apiKey(API_KEY)
+                .build();
+        youtubeClient = YoutubeClient.builder()
+                .apiKey(API_KEY)
+                .build();
 
-         nearByPlace();
+//         nearByPlace();
 //        youtubeSearch();
 //        photosByPlace();
     }

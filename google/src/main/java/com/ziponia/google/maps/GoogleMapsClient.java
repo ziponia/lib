@@ -40,4 +40,21 @@ public class GoogleMapsClient extends GoogleBaseClient {
         }
         return BASE_URL_MAPS + "/maps/api/place/photo" + "?key=" + API_KEY + builder.toString();
     }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static class Builder {
+        private String apiKey;
+
+        public Builder apiKey(String apiKey) {
+            this.apiKey = apiKey;
+            return this;
+        }
+
+        public GoogleMapsClient build() {
+            return new GoogleMapsClient(apiKey);
+        }
+    }
 }
