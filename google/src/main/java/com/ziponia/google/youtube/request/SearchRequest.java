@@ -12,6 +12,8 @@ import java.util.Date;
 @Setter
 @ToString
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class SearchRequest implements Serializable {
 
     @NonNull
@@ -34,6 +36,7 @@ public class SearchRequest implements Serializable {
     private String regionCode;
     private SafeSearch safeSearch;
     private String topicId;
+
     private String type;
     private VideoCaption videoCaption;
     private String videoCategoryId;
@@ -44,40 +47,6 @@ public class SearchRequest implements Serializable {
     private VideoLicense videoLicense;
     private VideoSyndicated videoSyndicated;
     private VideoType videoType;
-
-    SearchRequest(Part part, Boolean forMine, Boolean forContentOwner, Boolean relatedToVideoId, String channelId, ChannelType channelType, EventType eventType, Integer maxResults, String onBehalfOfContentOwner, Order order, String pageToken, Date publishedAfter, Date publishedBefore, String q, String regionCode, SafeSearch safeSearch, String topicId, String type, VideoCaption videoCaption, String videoCategoryId, VideoDefinition videoDefinition, VideoDimension videoDimension, VideoDuration videoDuration, VideoEmbeddable videoEmbeddable, VideoLicense videoLicense, VideoSyndicated videoSyndicated, VideoType videoType) {
-        this.part = part;
-        this.forMine = forMine;
-        this.forContentOwner = forContentOwner;
-        this.relatedToVideoId = relatedToVideoId;
-        this.channelId = channelId;
-        this.channelType = channelType;
-        this.eventType = eventType;
-        this.maxResults = maxResults;
-        this.onBehalfOfContentOwner = onBehalfOfContentOwner;
-        this.order = order;
-        this.pageToken = pageToken;
-        this.publishedAfter = publishedAfter;
-        this.publishedBefore = publishedBefore;
-        this.q = q;
-        this.regionCode = regionCode;
-        this.safeSearch = safeSearch;
-        this.topicId = topicId;
-        this.type = type;
-        this.videoCaption = videoCaption;
-        this.videoCategoryId = videoCategoryId;
-        this.videoDefinition = videoDefinition;
-        this.videoDimension = videoDimension;
-        this.videoDuration = videoDuration;
-        this.videoEmbeddable = videoEmbeddable;
-        this.videoLicense = videoLicense;
-        this.videoSyndicated = videoSyndicated;
-        this.videoType = videoType;
-    }
-
-    public static SearchRequestBuilder builder() {
-        return new SearchRequestBuilder();
-    }
 
     public enum Part {
         @SerializedName("id") ID,
@@ -168,9 +137,10 @@ public class SearchRequest implements Serializable {
         public SearchRequestBuilder type(Type... type) {
             StringBuilder builder = new StringBuilder();
             String json = new Gson().toJson(type);
-            this.type = json.replaceAll("\\[", "")
+            this.type = json
+                    .replaceAll("\\[", "")
                     .replaceAll("]", "")
-            .replaceAll("\"", "");
+                    .replaceAll("\"", "");
             return this;
         }
     }
