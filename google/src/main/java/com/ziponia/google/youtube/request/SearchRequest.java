@@ -37,7 +37,7 @@ public class SearchRequest implements Serializable {
     private SafeSearch safeSearch;
     private String topicId;
 
-    private String type;
+    private Type type;
     private VideoCaption videoCaption;
     private String videoCategoryId;
     private VideoDefinition videoDefinition;
@@ -132,7 +132,7 @@ public class SearchRequest implements Serializable {
         @SerializedName("movie") MOVIE
     }
 
-    public static class SearchRequestBuilder {
+    /*public static class SearchRequestBuilder {
 
         public SearchRequestBuilder type(Type... type) {
             StringBuilder builder = new StringBuilder();
@@ -143,5 +143,5 @@ public class SearchRequest implements Serializable {
                     .replaceAll("\"", "");
             return this;
         }
-    }
+    }*/
 }
