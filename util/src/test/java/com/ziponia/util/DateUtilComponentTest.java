@@ -18,7 +18,7 @@ public class DateUtilComponentTest {
 
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.YEAR, year);
-        cal.set(Calendar.MONTH, month - 1);
+        cal.set(Calendar.MONTH, month);
         int last = DateUtilComponent.lastDate(cal.getTime());
 
         System.out.println(String.format("%d 년 %d월 의 마지막날은 %d일 입니다.", year, month - 1, last));
